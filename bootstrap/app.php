@@ -12,7 +12,12 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        // Upload rute su izuzete iz CSRF zastite kako bi se napadi mogli
+        // demonstrirati i preko curl-a (bez tokena iz browsera).
+        $middleware->validateCsrfTokens(except: [
+            'vulnerable/upload',
+            'secure/upload',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

