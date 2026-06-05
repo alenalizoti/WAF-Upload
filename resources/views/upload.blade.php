@@ -75,7 +75,12 @@
             e.preventDefault();
 
             const fileInput = document.getElementById('file');
-            if (!fileInput.files.length) return;
+            if (!fileInput.files.length) {
+                result.className = 'block';
+                result.style.display = 'block';
+                result.textContent = 'Izaberi fajl pre slanja.';
+                return;
+            }
 
             const target = document.querySelector('input[name="target"]:checked').value;
             const data = new FormData();
@@ -83,7 +88,8 @@
 
             btn.disabled = true;
             result.className = '';
-            result.style.display = 'none';
+            result.style.display = 'block';
+            result.textContent = 'Slanje...';
 
             try {
                 const res = await fetch(target, {
