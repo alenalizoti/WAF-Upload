@@ -12,4 +12,5 @@ Route::get('/', function () {
 Route::post('/vulnerable/upload', [VulnerableUploadController::class, 'store']);
 
 // Zasticena ruta - WAF proverava fajl pre cuvanja.
-Route::post('/secure/upload', [SecureUploadController::class, 'store']);
+Route::post('/secure/upload', [SecureUploadController::class, 'store'])
+    ->middleware('upload.firewall');
