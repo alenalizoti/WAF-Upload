@@ -12,6 +12,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->alias([
+            'upload.firewall' => \App\Http\Middleware\UploadFirewall::class,
+        ]);
+
         // Upload rute su izuzete iz CSRF zastite kako bi se napadi mogli
         // demonstrirati i preko curl-a (bez tokena iz browsera).
         $middleware->validateCsrfTokens(except: [
